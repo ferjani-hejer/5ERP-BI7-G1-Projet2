@@ -49,10 +49,6 @@ public class ContratRestController {
 		return contrat;
 	}
 
-		/*@PutMapping(value = "/assignContratToEtudiant/{ce}/{nomE}/{prenomE}")
-		public Contrat assignContratToEtudiant (Contrat ce, String nomE, String prenomE){
-		return 	(contratService.affectContratToEtudiant(ce, nomE, prenomE));
-		}*/
 
 	@PutMapping(value = "/assignContratToEtudiant/{idContrat}/{nomE}/{prenomE}")
 	public Contrat assignContratToEtudiant (Integer idContrat, String nomE, String prenomE){
@@ -72,7 +68,6 @@ public class ContratRestController {
     @Scheduled(cron="0 0 13 * * *")//(cron="0 0 13 * * ?")(fixedRate =21600)
 	@PutMapping(value = "/majStatusContrat")
 	public void majStatusContrat (){
-		//return 	(contratService.affectContratToEtudiant(ce, nomE, prenomE));
 		contratService.retrieveAndUpdateStatusContrat();
 
 	}
