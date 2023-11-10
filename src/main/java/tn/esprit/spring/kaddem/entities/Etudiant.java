@@ -30,7 +30,7 @@ public class Etudiant implements Serializable{
     private Option op;
     @OneToMany(mappedBy="etudiant", cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<Contrat> Contrats;
+    private Set<Contrat> contrats;
     @ManyToOne
     @JsonIgnore
     private Departement departement;
@@ -38,7 +38,6 @@ public class Etudiant implements Serializable{
     @ManyToMany(mappedBy="etudiants")
 
     @JsonIgnore
-  //  private Set<Equipe> equipes ;
     private List<Equipe> equipes ;
 
 

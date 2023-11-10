@@ -40,9 +40,7 @@ public class EtudiantRestController {
 	// http://localhost:8089/Kaddem/etudiant/update-etudiant
 	@PutMapping("/update-etudiant")
 	public Etudiant updateEtudiant(@RequestBody Etudiant e) {
-		Etudiant etudiant= etudiantService.updateEtudiant(e);
-
-		return etudiant;
+		return etudiantService.updateEtudiant(e);
 	}
 
 	//@PutMapping("/affecter-etudiant-departement")

@@ -70,14 +70,13 @@ public class EtudiantServiceImplTest {
         etd.setPrenomE("Hejer");
         Etudiant etudiant = etudiantService.addEtudiant(etd);
 
-        // Modify some properties
-        etudiant.setNomE("UpdatedFirstName");  // Corrected property name
-        etudiant.setPrenomE("UpdatedLastName"); // Corrected property name
+        etudiant.setNomE("UpdatedFirstName");
+        etudiant.setPrenomE("UpdatedLastName");
 
         Etudiant updatedEtudiant = etudiantService.updateEtudiant(etudiant);
         assertNotNull(updatedEtudiant);
-        assertEquals("UpdatedFirstName", updatedEtudiant.getNomE());  // Corrected property name
-        assertEquals("UpdatedLastName", updatedEtudiant.getPrenomE()); // Corrected property name
+        assertEquals("UpdatedFirstName", updatedEtudiant.getNomE());
+        assertEquals("UpdatedLastName", updatedEtudiant.getPrenomE());
 
         etudiantService.removeEtudiant(updatedEtudiant.getIdEtudiant());
     }
@@ -161,6 +160,5 @@ public class EtudiantServiceImplTest {
         assertNotNull(retrievedEtudiant);
 
         etudiantService.removeEtudiant(newEtd.getIdEtudiant());
-
     }
 }
