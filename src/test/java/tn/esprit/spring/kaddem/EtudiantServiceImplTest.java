@@ -120,5 +120,34 @@ public class EtudiantServiceImplTest {
     }
 
 
+    @Test
+    public void testGetEtudiantsByDepartement() {
+        Departement departement = new Departement();
+        departement.setIdDepart(1);
+        departement.setNomDepart("IT Department");
+        Departement newDepartement = departementService.addDepartement(departement);
+
+        Etudiant etd = new Etudiant();
+        etd.setIdEtudiant(1);
+        etd.setNomE("Ferjani");
+        etd.setPrenomE("Hejer");
+        etd.setDepartement(departement);
+        Etudiant newEtd1 = etudiantService.addEtudiant(etd);
+
+        Etudiant etd2 = new Etudiant();
+        etd2.setIdEtudiant(2);
+        etd2.setNomE("Ferjani");
+        etd2.setPrenomE("Hejer 2");
+        etd2.setDepartement(departement);
+        Etudiant newEtd2 = etudiantService.addEtudiant(etd2);
+
+        List<Etudiant> etudiants = etudiantService.getEtudiantsByDepartement(newDepartement.getIdDepart());
+
+        assertNotNull(etudiants);
+        assertEquals(2, etudiants.size());
+        etudiantService.removeEtudiant(newEtd1.getIdEtudiant());
+        etudiantService.removeEtudiant(newEtd2.getIdEtudiant());
+    }
+
     
 }
