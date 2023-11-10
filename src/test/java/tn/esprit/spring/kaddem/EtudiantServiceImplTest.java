@@ -149,5 +149,18 @@ public class EtudiantServiceImplTest {
         etudiantService.removeEtudiant(newEtd2.getIdEtudiant());
     }
 
-    
+    @Test
+    public void testRemoveEtudiant() {
+        Etudiant etd = new Etudiant();
+        etd.setIdEtudiant(1);
+        etd.setNomE("Ferjani");
+        etd.setPrenomE("Hejer");
+        Etudiant newEtd = etudiantService.addEtudiant(etd);
+
+        Etudiant retrievedEtudiant = etudiantService.retrieveEtudiant(newEtd.getIdEtudiant());
+        assertNotNull(retrievedEtudiant);
+
+        etudiantService.removeEtudiant(newEtd.getIdEtudiant());
+
+    }
 }
