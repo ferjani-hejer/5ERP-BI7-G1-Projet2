@@ -50,5 +50,17 @@ public class EtudiantServiceImplTest {
         etudiantService.removeEtudiant(newEtd1.getIdEtudiant());
         etudiantService.removeEtudiant(newEtd2.getIdEtudiant());
     }
+    @Test
+    public void testAddEtudiant() {
+        Etudiant etd = new Etudiant();
+        etd.setIdEtudiant(1);
+        etd.setNomE("Ferjani");
+        etd.setPrenomE("Hejer");
+        log.info("test");
+        Etudiant etudiant = etudiantService.addEtudiant(etd);
+        assertNotNull(etudiant);
+        etudiantService.removeEtudiant(etudiant.getIdEtudiant());
+    }
+
     
 }
