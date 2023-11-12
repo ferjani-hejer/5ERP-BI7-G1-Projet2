@@ -71,6 +71,7 @@ public class DepartementServiceImplTest {
     }
 
 
+
     @Test
     public void testRetrieveDepartement() {
         Departement dept = new Departement();
