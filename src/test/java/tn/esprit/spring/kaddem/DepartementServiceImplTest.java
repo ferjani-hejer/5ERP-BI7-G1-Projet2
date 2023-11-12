@@ -40,4 +40,19 @@ public class DepartementServiceImplTest {
         departementService.deleteDepartement(newDept.getIdDepart());
     }
 
+    @Test
+    public void testAddDepartement() {
+        Departement dept = new Departement();
+        dept.setIdDepart(1);
+        dept.setNomDepart("Ferjani");
+
+        log.info("test");
+        Departement departement = departementService.addDepartement(dept);
+        assertNotNull(departement);
+        departementService.deleteDepartement(departement.getIdDepart());
+    }
+
+//
+
+    //
 }
