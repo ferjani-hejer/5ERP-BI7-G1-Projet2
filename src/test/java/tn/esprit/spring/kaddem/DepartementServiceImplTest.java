@@ -52,7 +52,23 @@ public class DepartementServiceImplTest {
         departementService.deleteDepartement(departement.getIdDepart());
     }
 
-//
+    @Test
+    public void testUpdateDepartement() {
+        Departement dept = new Departement();
+        dept.setIdDepart(1);
+        dept.setNomDepart("Informatique");
 
-    //
+        Departement departement = departementService.addDepartement(dept);
+
+        // Modify some properties
+        departement.setNomDepart("UpdatedName");  // Corrected property name
+
+
+        Departement updatedDepartement = departementService.updateDepartement(departement);
+        assertNotNull(updatedDepartement);
+        assertEquals("UpdatedName", updatedDepartement.getNomDepart());  // Corrected property name
+        departementService.deleteDepartement(updatedDepartement.getIdDepart());
+    }
+
+
 }
