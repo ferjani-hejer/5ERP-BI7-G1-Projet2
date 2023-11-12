@@ -71,4 +71,22 @@ public class DepartementServiceImplTest {
     }
 
 
+    @Test
+    public void testRetrieveDepartement() {
+        Departement dept = new Departement();
+        dept.setIdDepart(1);
+        dept.setNomDepart("Informatique");
+        Departement departement = departementService.addDepartement(dept);
+
+        Departement retrievedDepartement = departementService.retrieveDepartement(departement.getIdDepart());
+        assertNotNull(retrievedDepartement);
+        assertEquals("Informatique", retrievedDepartement.getNomDepart());
+
+        departementService.deleteDepartement(retrievedDepartement.getIdDepart());
+    }
+
+
+
+
+
 }
