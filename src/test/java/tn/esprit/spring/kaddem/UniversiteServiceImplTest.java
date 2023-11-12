@@ -68,4 +68,18 @@ public class UniversiteServiceImplTest {
         universiteService.deleteUniversite(updatedUniversite.getIdUniv());
     }
 
+    @Test
+    public void testRetrieveUniversite() {
+        Universite univ = new Universite();
+        univ.setIdUniv(1);
+        univ.setNomUniv("ESPRIT");
+        Universite universite = universiteService.addUniversite(univ);
+
+        Universite retrievedUniversite = universiteService.retrieveUniversite(universite.getIdUniv());
+        assertNotNull(retrievedUniversite);
+        assertEquals("ESPRIT", retrievedUniversite.getNomUniv());
+
+        universiteService.deleteUniversite(retrievedUniversite.getIdUniv());
+    }
+
 }
