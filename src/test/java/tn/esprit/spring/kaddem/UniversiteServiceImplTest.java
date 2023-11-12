@@ -52,4 +52,20 @@ public class UniversiteServiceImplTest {
         universiteService.deleteUniversite(universite.getIdUniv());
     }
 
+    @Test
+    public void testUpdateUniversite() {
+        Universite univ = new Universite();
+        univ.setIdUniv(1);
+        univ.setNomUniv("ESPRIT");
+        Universite universite = universiteService.addUniversite(univ);
+        // Modify some properties
+        universite.setNomUniv("Updated Name");  // Corrected property name
+
+        Universite updatedUniversite =universiteService.updateUniversite(universite);
+        assertNotNull(updatedUniversite);
+        assertEquals("Updated Name", updatedUniversite.getNomUniv());  // Corrected property name
+
+        universiteService.deleteUniversite(updatedUniversite.getIdUniv());
+    }
+
 }
