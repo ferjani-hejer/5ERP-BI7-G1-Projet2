@@ -41,4 +41,15 @@ public class UniversiteServiceImplTest {
 
     }
 
+    @Test
+    public void testAddUniversite() {
+        Universite univ = new Universite();
+        univ.setIdUniv(1);
+        univ.setNomUniv("ESPRIT");
+        log.info("test");
+        Universite universite = universiteService.addUniversite(univ);
+        assertNotNull(universite);
+        universiteService.deleteUniversite(universite.getIdUniv());
+    }
+
 }
