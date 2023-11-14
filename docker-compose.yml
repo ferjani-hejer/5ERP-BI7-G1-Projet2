@@ -7,6 +7,7 @@ services:
       - 3306:3306
     environment:
       - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=kaddemdb
     volumes:
       - /home/mysql/data:/var/lib/mysql
 
@@ -14,6 +15,8 @@ services:
     image: kaddem-devops
     container_name: kaddem-devops
     restart: on-failure
+    environment:
+      - spring.datasource.url=jdbc:mysql://mysqldb:3306/kaddemdb
     ports:
       - 8089:8089
     depends_on:
