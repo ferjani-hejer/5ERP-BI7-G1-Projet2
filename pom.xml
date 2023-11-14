@@ -118,9 +118,8 @@
         <repository>
             <id>deploymentRepo</id>
             <name>admin</name>
-            <url>http://192.168.33.10:8081/repository/5ERP-BI7-G1-Projet2/</url>
+            <url>http://192.168.33.10:8081/repository/myreponexus/</url>
         </repository>
     </distributionManagement>
 
 </project>
-
