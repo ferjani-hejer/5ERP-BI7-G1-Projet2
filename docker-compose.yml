@@ -11,6 +11,8 @@ services:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     volumes:
       - db:/var/lib/mysql
+    command: --initialize-insecure --explicit_defaults_for_timestamp
+
 
     # backend application service
   kaddem-backend:
