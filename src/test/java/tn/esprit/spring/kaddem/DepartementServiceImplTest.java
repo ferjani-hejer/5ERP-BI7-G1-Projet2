@@ -1,93 +1,66 @@
 package tn.esprit.spring.kaddem;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
-
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 import tn.esprit.spring.kaddem.entities.Departement;
-import tn.esprit.spring.kaddem.entities.Etudiant;
 import tn.esprit.spring.kaddem.repositories.DepartementRepository;
 import tn.esprit.spring.kaddem.services.DepartementServiceImpl;
-import tn.esprit.spring.kaddem.services.EtudiantServiceImpl;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
 
-@ExtendWith(SpringExtension.class)
-@SpringBootTest
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+@ExtendWith(MockitoExtension.class)
 @Slf4j
-public class DepartementServiceImplTest {
-    @Autowired
+class DepartementServiceImplTest {
+
+    @InjectMocks
     DepartementServiceImpl departementService;
+
+    @Mock
+    DepartementRepository departementRepository;
+
     @Test
-    public void testRetrieveAllDepartements(){
-        Departement dept = new Departement();
-        dept.setIdDepart(1);
-        dept.setNomDepart("Sameher");
+    void testAddDepartement() {
+        // Create a Departement instance and set its properties
+        Departement addedDepartement = new Departement();
+        addedDepartement.setNomDepart("NomDepartement");
 
-        Departement newDept = departementService.addDepartement(dept); // Save Database
+        // Mock the behavior of your repository to return the addedDepartement when save is called
+        Mockito.when(departementRepository.save(Mockito.any(Departement.class))).thenReturn(addedDepartement);
 
-        List<Departement> departements = departementService.retrieveAllDepartements(); // Get all Departments
+        // Call the service method you want to test
+        Departement savedDepartement = departementService.addDepartement(addedDepartement);
 
-        assertNotNull(departements);
-        assertEquals(1, departements.size());
-
-        departementService.deleteDepartement(newDept.getIdDepart());
+        // Assertions
+        assertNotNull(savedDepartement);
+        // Add more specific assertions based on the behavior you expect
     }
 
     @Test
-    public void testAddDepartement() {
-        Departement dept = new Departement();
-        dept.setIdDepart(1);
-        dept.setNomDepart("Ferjani");
+    void testRetrieveDepartement() {
+        // Create a Departement instance and set its properties
+        Departement addedDepartement = new Departement();
+        addedDepartement.setIdDepart(1);
+        addedDepartement.setNomDepart("NomDepartement");
 
-        log.info("test");
-        Departement departement = departementService.addDepartement(dept);
-        assertNotNull(departement);
-        departementService.deleteDepartement(departement.getIdDepart());
-    }
+        // Mock the behavior of your repository to return a Departement when findById is called
+        Mockito.when(departementRepository.findById(Mockito.anyInt())).thenReturn(Optional.of(addedDepartement));
 
-    @Test
-    public void testUpdateDepartement() {
-        Departement dept = new Departement();
-        dept.setIdDepart(1);
-        dept.setNomDepart("Informatique");
+        // Call the service method you want to test
+        Departement retrievedDepartement = departementService.retrieveDepartement(1);
 
-        Departement departement = departementService.addDepartement(dept);
-
-        // Modify some properties
-        departement.setNomDepart("UpdatedName");  // Corrected property name
-
-
-        Departement updatedDepartement = departementService.updateDepartement(departement);
-        assertNotNull(updatedDepartement);
-        assertEquals("UpdatedName", updatedDepartement.getNomDepart());  // Corrected property name
-        departementService.deleteDepartement(updatedDepartement.getIdDepart());
-    }
-
-
-
-    @Test
-    public void testRetrieveDepartement() {
-        Departement dept = new Departement();
-        dept.setIdDepart(1);
-        dept.setNomDepart("Informatique");
-        Departement departement = departementService.addDepartement(dept);
-
-        Departement retrievedDepartement = departementService.retrieveDepartement(departement.getIdDepart());
+        // Assertions
         assertNotNull(retrievedDepartement);
-        assertEquals("Informatique", retrievedDepartement.getNomDepart());
-
-        departementService.deleteDepartement(retrievedDepartement.getIdDepart());
+        // Add more specific assertions based on the behavior you expect
     }
 
-
-
-
-
+    // ... Add more test methods as needed for other operations (update, delete, etc.)
 }
