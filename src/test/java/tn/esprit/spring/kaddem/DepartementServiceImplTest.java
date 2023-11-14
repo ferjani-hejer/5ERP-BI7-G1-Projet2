@@ -62,5 +62,44 @@ class DepartementServiceImplTest {
         // Add more specific assertions based on the behavior you expect
     }
 
+    @Test
+    void testUpdateDepartement() {
+        // Create a Departement instance and set its properties
+        Departement originalDepartement = new Departement();
+        originalDepartement.setIdDepart(1);
+        originalDepartement.setNomDepart("NomDepartement");
+
+        // Mock the behavior of your repository to return the originalDepartement when save is called
+        Mockito.when(departementRepository.save(Mockito.any(Departement.class))).thenReturn(originalDepartement);
+
+        // Call the service method you want to test (for example, an update method in your service)
+        Departement updatedDepartement = departementService.updateDepartement(originalDepartement);
+
+        // Assertions
+        assertNotNull(updatedDepartement);
+        // Add more specific assertions based on the behavior you expect after the update
+    }
+
+    @Test
+    void testDeleteDepartement() {
+        // Create a Departement instance and set its properties
+        Departement departementToDelete = new Departement();
+        departementToDelete.setIdDepart(1);
+        departementToDelete.setNomDepart("NomDepartement");
+
+        // Mock the behavior of your repository to return the departementToDelete when findById is called
+        Mockito.when(departementRepository.findById(Mockito.anyInt())).thenReturn(Optional.of(departementToDelete));
+
+        // Mock the behavior of your repository to return void when delete is called
+        Mockito.doNothing().when(departementRepository).delete(Mockito.any(Departement.class));
+
+        // Call the service method you want to test (for example, a delete method in your service)
+        departementService.deleteDepartement(1);
+
+        // Add assertions to ensure the delete operation was called as expected
+        Mockito.verify(departementRepository, Mockito.times(1)).delete(Mockito.any(Departement.class));
+    }
+
+
     // ... Add more test methods as needed for other operations (update, delete, etc.)
 }
