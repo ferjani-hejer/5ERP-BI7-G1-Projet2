@@ -1,6 +1,7 @@
 version: '3.7'
 services:
   mysqldb:
+    container_name: mysqldb
     image: mysql:latest
     restart: unless-stopped
     ports:
@@ -12,7 +13,7 @@ services:
       - /home/mysql/data:/var/lib/mysql
 
   kaddem-devops:
-    image: ferjanihejer905/kaddem-devops:67
+    image: ferjanihejer905/kaddem-devops:69
     container_name: kaddem-devops
     restart: on-failure
     environment:
