@@ -65,4 +65,17 @@ pipeline {
             }
         }
     }
+
+    post {
+            failure {
+                mail to: 'mohamedali.kchaou@esprit.tn',
+                subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+                body: "${currentBuild.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}console"
+            }
+            success {
+                mail to: 'mohamedali.kchaou@esprit.tn',
+                subject: "success Pipeline: ${currentBuild.fullDisplayName}",
+                body: "${currentBuild.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}console"
+            }
+        }
 }
