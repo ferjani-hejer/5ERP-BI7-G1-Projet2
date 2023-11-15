@@ -40,8 +40,16 @@ pipeline {
                 sh 'mvn deploy'
             }
         }
-
         
+        stage('Push Docker Image to Docker Hub') {
+            steps {
+                script {
+                    sh 'docker tag kaddemprojectchedly_app:latest chedly1/chedlykchaou-5twin5-kaddem_app:latest'
+                    sh 'docker login -u kchaouu -p  medali123'
+                    sh 'docker push kchaouu/mohamedalikchaou-5bi-kaddem_app'
+                }
+            }
+        }
 
      
 
