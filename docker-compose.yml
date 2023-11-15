@@ -13,8 +13,8 @@ services:
       - /home/mysql/data:/var/lib/mysql
 
   kaddem-devops:
-    image: ferjanihejer905/kaddem-devops:22
-    container_name: kaddem-devops
+    image: sarrabenmessaoud/kaddem-devops:28
+    container_name: kaddem-spring-devops
     restart: on-failure
     environment:
       - spring.datasource.url=jdbc:mysql://kaddem-mysqldb:3306/kaddemdb
