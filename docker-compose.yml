@@ -13,7 +13,7 @@ services:
       - /home/mysql/data:/var/lib/mysql
 
   kaddem-devops:
-    image: ferjanihejer905/kaddem-devops:22
+    image: ferjanihejer905/kaddem-devops:39
     container_name: kaddem-devops
     restart: on-failure
     environment:
