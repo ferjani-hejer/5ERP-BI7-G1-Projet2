@@ -10,11 +10,13 @@
     </parent>
     <groupId>tn.esprit.spring</groupId>
     <artifactId>kaddem</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>kaddem</name>
     <description>kaddem</description>
     <properties>
         <java.version>1.8</java.version>
+        <sonar.host.url>http://192.168.1.18:9000</sonar.host.url>
+        <sonar.login>869a48589e4b11d46a31ae2a48bf4250766a7d08</sonar.login>
     </properties>
     <dependencies>
         <dependency>
@@ -117,8 +119,8 @@
     <distributionManagement>
         <repository>
             <id>deploymentRepo</id>
-            <name>admin</name>
-            <url>http://192.168.33.10:8081/repository/myreponexus/</url>
+            <name>Nexus Repository</name>
+            <url>http://192.168.33.10:8081/repository/maven-releases/</url>
         </repository>
     </distributionManagement>
 
