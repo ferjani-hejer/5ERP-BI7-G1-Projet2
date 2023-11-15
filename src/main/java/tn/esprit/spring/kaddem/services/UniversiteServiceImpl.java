@@ -32,8 +32,8 @@ return  (universiteRepository.save(u));
     }
 
   public Universite retrieveUniversite (Integer idUniversite){
-Universite u = universiteRepository.findById(idUniversite).get();
-return  u;
+      return  universiteRepository.findById(idUniversite).get();
+
     }
     public  void deleteUniversite(Integer idUniversite){
         universiteRepository.delete(retrieveUniversite(idUniversite));
@@ -47,7 +47,7 @@ return  u;
     }
 
     public Set<Departement> retrieveDepartementsByUniversite(Integer idUniversite){
-Universite u=universiteRepository.findById(idUniversite).orElse(null);
-return u.getDepartements();
+        return universiteRepository.findById(idUniversite).orElse(null).getDepartements();
+
     }
 }
