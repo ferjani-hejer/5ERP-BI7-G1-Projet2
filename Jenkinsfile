@@ -7,8 +7,8 @@ pipeline {
                 script {
                     checkout([
                         $class: 'GitSCM',
-                        branches: [[name: 'ChedlyKchaou-4TWIN5-G5-KADDEM']],
-                        userRemoteConfigs: [[url: 'https://github.com/Twin5Devexplorerskaddem/5TWIN5_DEVEXPLORERS_KADDEM.git']]
+                        branches: [[name: 'MohamedaliKchaou-5ERPBI7-G1']],
+                        userRemoteConfigs: [[url: 'https://github.com/ferjani-hejer/5ERP-BI7-G1-Projet2.git']]
                     ])
                 }
             }
@@ -41,30 +41,9 @@ pipeline {
             }
         }
 
-        stage('Push Docker Image to Docker Hub') {
-            steps {
-                script {
-                    sh 'docker tag kaddemprojectchedly_app:latest chedly1/chedlykchaou-5twin5-kaddem_app:latest'
-                    sh 'docker login -u chedly1 -p chedly123456'
-                    sh 'docker push chedly1/chedlykchaou-5twin5-kaddem_app:latest'
-                }
-            }
-        }
+        
 
-        stage('Email Notification Msg') {
-            steps {
-                script {
-                    emailext(
-                        subject: "Email from jenkins",
-                        body: "This is a mail from jenkins chedly.",
-                        recipientProviders: [[$class: 'CulpritsRecipientProvider']],
-                        to: 'chedly.kchaou@esprit.tn',
-                        replyTo: 'springbootanulattest@gmail.com',
-                        mimeType: 'text/html'
-                    )
-                }
-            }
-        }
+     
 
 
 
